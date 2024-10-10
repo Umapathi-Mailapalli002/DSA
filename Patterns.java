@@ -118,15 +118,15 @@ public class Patterns {
         //     System.out.println();
         // }
         //for alphabats H.W
-        int ch = 65;
-        for (int i = 0; i < n; i++) {
-            for (int j = i+1; j > 0; j--) {
-                System.out.print((char)(ch+j-1));
+        // int ch = 65;
+        // for (int i = 0; i < n; i++) {
+        //     for (int j = i+1; j > 0; j--) {
+        //         System.out.print((char)(ch+j-1));
                 
-            }
-            System.out.println();
+        //     }
+        //     System.out.println();
            
-        }
+        // }
 
 
         //floyd's triangle pattern 
@@ -166,5 +166,90 @@ public class Patterns {
         //     }
         //     System.out.println();
         // }
+
+
+        //pattern 5 Inverted Triangle Pattern
+        //1111
+        // 222
+        //  33
+        //   4
+        // for (int i = 0; i < n; i++) {
+        //     for (int j = 0; j < i+1; j++) {
+        //         System.out.print(" ");
+        //     }
+
+        //     for (int j = 0; j < n-i; j++) {
+        //         System.out.print(i+1);
+        //     }
+        //     System.out.println();
+        // }
+
+        //for alphabets
+        // char ch = 65;
+        // for (int i = 0; i < n; i++) {
+        //     //print spaces
+        //     for (int j = 0; j < i; j++) {
+        //         System.out.print(" ");
+        //     }
+        //     //print pattern
+        //     for (int j = 0; j < n-i; j++) {
+        //         System.out.print(ch);
+        //     }
+        //     ch++;
+        //     System.out.println();
+        // }
+
+
+        //pattern 6 pyramid pattern
+        //    1
+        //   121
+        //  12321
+        // 1234321
+
+        // for (int i = 0; i < n; i++) {
+
+        //     //spaces
+        //     for (int j = 0; j < n-i-1; j++) {
+        //         System.out.print(" ");
+        //     }
+
+        //     //from 1 to 4 numbers first
+        //     for (int j = 0; j < i+1; j++) {
+        //         System.out.print(j+1);
+        //     }
+
+        //     //print remaining numbers
+        //     for (int j = i; j > 0; j--) {
+        //         System.out.print(j);
+        //     }
+        //     System.out.println();
+        // }
+
+        //pattern 7 Hollow Diamond Pattern
+        //   *
+        //  * *
+        // *   *
+        //*     *
+        // *   *
+        //  * *
+        //   *
+        //for upper triangle
+        for (int i = 0; i < n; i++) {
+            //print spaces
+            for (int j = 0; j < n-i-1; j++) {
+                System.out.print(" ");
+            }
+            //print the first line
+            System.out.print("*");
+        }
+        //remaing side spaces and stars
+        for (int i = 0; i < n; i++) {
+            //spaces
+            for (int j = 0; j < i*2-1; j++) {
+                System.out.print(" ");
+            }
+            //stars
+            System.out.print("*"); //not completed
+        }
     }
 }

@@ -117,15 +117,14 @@ public class Patterns {
         //     }
         //     System.out.println();
         // }
-        //for alphabats
-
-        char ch = 65;
+        //for alphabats H.W
+        int ch = 65;
         for (int i = 0; i < n; i++) {
             for (int j = i+1; j > 0; j--) {
-                System.out.print(" ");
+                System.out.print((char)(ch+j-1));
                 
             }
-            System.out.println(ch);
+            System.out.println();
            
         }
 

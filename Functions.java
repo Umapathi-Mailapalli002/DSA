@@ -35,6 +35,27 @@ public class Functions {
         // }
         return sumOfDigits;
     }
+
+    //ncr calculating combitions
+    static int calculateNcr(int n, int r){
+        int n_fact = 1;
+        int r_fact = 1;
+        int n_r_fact = 1;
+         //to calculate the n!
+        for (int i = 1; i <= n; i++) {
+            n_fact *= i;
+        }
+        //calculate r! 
+        for (int i = 1; i <= r; i++) {
+            r_fact *= i;
+        }
+        //calculate (n-r)!
+        for (int i = 1; i <= n-r; i++) {
+            n_r_fact *= i;
+        }
+        int ncr = n_fact/(r_fact*n_r_fact);
+        return ncr;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -49,7 +70,9 @@ public class Functions {
 
     // System.out.println(factorial(n));
        
-        System.out.println(sumOfDigits(n));
+       // System.out.println(sumOfDigits(n));
+       int r = sc.nextInt();
+       System.out.println("the ncr is: " + calculateNcr(n, r));
 
     }
 }

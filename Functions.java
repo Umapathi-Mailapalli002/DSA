@@ -56,6 +56,37 @@ public class Functions {
         int ncr = n_fact/(r_fact*n_r_fact);
         return ncr;
     }
+
+    //alternate methode
+    static int Ncr(int n, int r){
+        //used n factorial methode
+        int n_fact= factorial(n);
+        int r_fact = factorial(r);
+        int n_r_fact = factorial(n-r);
+
+        int ncr = n_fact/(r_fact*n_r_fact);
+        return  ncr;
+    }
+
+    //check the number is prime or not
+    static  int  checkPrimeNumOrNot(int n){
+        boolean isPrime = true;
+        for (int i = 2; i*i <= n; i++) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) {
+            System.out.println("prime number");
+        }else{
+            System.out.println("non prime number");
+        }
+        return  0;
+    }
+
+    //print all prime numbers from 2 to n;
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -71,8 +102,12 @@ public class Functions {
     // System.out.println(factorial(n));
        
        // System.out.println(sumOfDigits(n));
-       int r = sc.nextInt();
-       System.out.println("the ncr is: " + calculateNcr(n, r));
+
+       //int r = sc.nextInt();
+       //System.out.println("the ncr is: " + calculateNcr(n, r));
+       //System.out.println("the ncr is: " + Ncr(n, r));
+
+       //System.out.println(checkPrimeNumOrNot(n));
 
     }
 }

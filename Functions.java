@@ -86,7 +86,35 @@ public class Functions {
     }
 
     //print all prime numbers from 2 to n;
-    
+    static int printPrimeNum(int n){
+        for (int i = 2; i <= n; i++) {
+            boolean isPrime = true;
+           for (int j = 2; j <= i/2; j++) {
+               if (i % j == 0) {
+                isPrime = false;
+                break;
+               }
+           }
+           if (isPrime) {
+            System.out.println(i);
+           }
+        }
+        return 0;
+    }
+
+    //fibonacci series to n
+    static int fibonacci(int n){
+        int x= 0;
+        int y= 1;
+        int curr;
+        for (int i = 0; i < n; i++) {
+           curr = x+y;
+           System.out.println(x);
+           x = y;
+           y = curr;
+        }
+        return  0;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -108,6 +136,7 @@ public class Functions {
        //System.out.println("the ncr is: " + Ncr(n, r));
 
        //System.out.println(checkPrimeNumOrNot(n));
-
+        //System.out.println(printPrimeNum(n));
+        System.out.println(fibonacci(n));
     }
 }

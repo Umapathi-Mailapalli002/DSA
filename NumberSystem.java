@@ -24,6 +24,7 @@ public class NumberSystem {
             n/=10;
         }
         return decimalNum;
+        
     }
     public static void main(String[] args) {
        Scanner sc = new Scanner(System.in);

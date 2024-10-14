@@ -88,6 +88,34 @@ static void sumAndProductOfArray(int[] arr, int size){
     System.out.println("sum of all element is array is :"+ sum);
     System.out.println("product of all element is array is :"+ product);
 }
+
+//swap the max and min number of array
+static void swapMaxAndMinOfArray(int[] arr, int size){
+    int maxIndex = Integer.MIN_VALUE;
+    int minIndex = Integer.MAX_VALUE;
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] > maxIndex) {
+            maxIndex = i;
+        }
+        if (arr[i] < minIndex) {
+            minIndex = i;
+        }
+    }
+        swap(arr, maxIndex, minIndex);
+        
+}
+
+//print all the unique values in an array
+static void printUniqueValues(int[] arr, int size){
+    for (int i = 0; i < size; i++) {
+        for (int j = i+1; j < size; j++) {
+            if (arr[j] != arr[i]) {
+                System.out.print(arr[i]+" ");
+                
+            }
+        }
+    }
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -107,9 +135,17 @@ static void sumAndProductOfArray(int[] arr, int size){
     //   for (int i = 0; i < size; i++) {
     //     System.out.print(arr[i]+" ");
     //}
-    sumAndProductOfArray(arr, size);
+    //sumAndProductOfArray(arr, size);
+
+    // swapMaxAndMinOfArray(arr, size);
+    // for (int i = 0; i < size; i++) {
+    //         System.out.print(arr[i]+" ");
+    //     }
+    // }
+
+    printUniqueValues(arr, size);
     }
-   
+    
     
     
 }

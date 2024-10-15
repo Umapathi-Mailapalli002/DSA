@@ -134,15 +134,57 @@ static  void intersectionOfArrays(int[] arr_1, int[] arr_2, int size_1, int size
         }
     }
 }
+
+//some problems on arrays
+
+//find the occurance of a number
+static int countNumberOfOcurrance(int[] arr, int size, int target){
+    int count = 0;
+    for (int i = 0; i < size; i++) {
+        if(arr[i] == target){
+            count++;
+        }
+    }
+    return count;
+
+}
+
+//find the last occurrence of element x
+static int lastOccurrence(int[] arr, int size, int target){
+    int lastOccurrenceIndex = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) {
+            lastOccurrenceIndex = i;
+        }
+    }
+    return  lastOccurrenceIndex;
+}
+
+//check is it sorted or not
+static void isSorted(int[] arr, int size){
+    boolean check = true;
+    for (int i = 1; i < size; i++) {
+        if (arr[i-1] > arr[i]) {
+            check = false;
+            break;
+        }
+    }
+    if (check) {
+        System.out.println("is sorted");
+    }else{
+        System.out.println("is not sorted");
+    }
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int size = sc.nextInt();
-        // int[] arr = new int[size];
-        // for (int idx = 0; idx < arr.length; idx++) {
-        //     arr[idx] = sc.nextInt();
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+        for (int idx = 0; idx < arr.length; idx++) {
+            arr[idx] = sc.nextInt();
             
-        // }
-        //int target = sc.nextInt();
+         }
+       // int target = sc.nextInt();
         //smallAndLargestArray(arr, size);
        // smallAndLargestArrayIndex(arr, size);
        //System.out.println(linearSearch(arr, size, target));
@@ -162,19 +204,22 @@ static  void intersectionOfArrays(int[] arr_1, int[] arr_2, int size_1, int size
     // }
 
    // printUniqueValues(arr, size);
-   int[] arr1 = new int[5];
-  arr1[0] = 1;
-  arr1[1] = 2;
-  arr1[2] = 3;
-  arr1[3] = 4;
-  arr1[4] = 5;
-   int[] arr2 = new int[4];
-  arr2[0] = 6;
-  arr2[1] = 7;
-  arr2[2] = 3;
-  arr2[3] = 1;
+//    int[] arr1 = new int[5];
+//   arr1[0] = 1;
+//   arr1[1] = 2;
+//   arr1[2] = 3;
+//   arr1[3] = 4;
+//   arr1[4] = 5;
+//    int[] arr2 = new int[4];
+//   arr2[0] = 6;
+//   arr2[1] = 7;
+//   arr2[2] = 3;
+//   arr2[3] = 1;
 
-   intersectionOfArrays(arr1, arr2, 5, 4);
+   //intersectionOfArrays(arr1, arr2, 5, 4);
+   //System.out.println(countNumberOfOcurrance(arr, size, target));
+   //System.out.println(lastOccurrence(arr, size, target));
+   isSorted(arr, size);
     }
     
     

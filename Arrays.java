@@ -167,7 +167,8 @@ static void isSorted(int[] arr, int size){
     for (int i = 1; i < size; i++) {
         if (arr[i-1] > arr[i]) {
             check = false;
-            break;
+            break
+            ;
         }
     }
     if (check) {
@@ -176,6 +177,80 @@ static void isSorted(int[] arr, int size){
         System.out.println("is not sorted");
     }
 }
+
+//leetcode Single number problem
+static int singleNumber(int[] num){
+    int start = 0;
+    int end = num.length-1;
+    while (start < end) { 
+        if(num[start] != num[end]){
+            start++;
+        }else{
+            num[start] = 0;
+            num[end] = 0;
+            end--;
+            start = 0;
+        }
+
+    }
+int ans = 0;
+    for (int i = 0; i < num.length; i++) {
+        if (num[i] > 0) {
+            ans = num[i];
+        }
+    }
+    return ans;
+}
+//alternate methode to solve in leetcode in linear way
+static int singleNumber2(int[] num){
+    int ans = 0;
+    //this is simply done with exor
+    for (int i = 0; i < num.length; i++) {
+        ans ^= num[i];
+    }
+    return ans;
+}
+//target sum of array elements of pairs 
+static void targetSumOfPairs(int[] arr, int target){
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i+1; j < arr.length; j++) {
+            if (arr[i] + arr[j] == target) {
+                System.out.println(arr[i]+","+arr[j]);
+            }
+        }
+    }
+}
+
+//triples whose sum is equal to the target number
+static void targetSumOfTriples(int[] arr, int target){
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i+1; j < arr.length; j++) {
+            for (int j2 = j+1; j2 < arr.length; j2++) {
+                if (arr[i] + arr[j] + arr[j2] == target) {
+                    System.out.println(arr[i]+","+arr[j]+","+arr[j2]);
+                }
+            }
+        }
+    }
+}
+
+//find the second max in an array
+static int secondMax(int[] arr){
+    int max = Integer.MIN_VALUE;
+    int secondMax = Integer.MIN_VALUE;
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    
+    return ;
+}
+//bootforce solution of maximum subarray sum
+// static int maxSubArray(int[] arr){
+
+// }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -184,7 +259,7 @@ static void isSorted(int[] arr, int size){
             arr[idx] = sc.nextInt();
             
          }
-       // int target = sc.nextInt();
+        int target = sc.nextInt();
         //smallAndLargestArray(arr, size);
        // smallAndLargestArrayIndex(arr, size);
        //System.out.println(linearSearch(arr, size, target));
@@ -219,7 +294,12 @@ static void isSorted(int[] arr, int size){
    //intersectionOfArrays(arr1, arr2, 5, 4);
    //System.out.println(countNumberOfOcurrance(arr, size, target));
    //System.out.println(lastOccurrence(arr, size, target));
-   isSorted(arr, size);
+  // isSorted(arr, size);
+//   System.out.println(singleNumber(arr));
+//   System.out.println("single number which is unique is: "+singleNumber2(arr));
+//targetSumOfPairs(arr, target);
+        // targetSumOfTriples(arr, target);
+       System.out.println(secondMax(arr));
     }
     
     

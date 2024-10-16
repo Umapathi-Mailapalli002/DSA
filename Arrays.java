@@ -235,21 +235,40 @@ static void targetSumOfTriples(int[] arr, int target){
 }
 
 //find the second max in an array
-static int secondMax(int[] arr){
+static int max(int[] arr){
     int max = Integer.MIN_VALUE;
-    int secondMax = Integer.MIN_VALUE;
     for (int i = 0; i < arr.length; i++) {
         if (arr[i] > max) {
             max = arr[i];
         }
     }
     
-    return ;
+    return max;
+}
+static int secondMax(int[] arr){
+    int mx = max(arr);
+
+    for (int i = 0; i < arr.length; i++) {
+        if (arr[i] == mx) {
+            arr[i] = Integer.MIN_VALUE;
+        }
+    }
+    int secondmx = max(arr);
+    
+    return secondmx;
 }
 //bootforce solution of maximum subarray sum
-// static int maxSubArray(int[] arr){
-
-// }
+static void maxSubArray(int[] arr){
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i; j < arr.length; j++) {
+            for (int j2 = i; j2 < j; j2++) {
+                System.out.print(arr[j2]);
+            }
+            System.out.print(" ");
+        }
+        System.out.println();
+    }
+}
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -299,7 +318,8 @@ static int secondMax(int[] arr){
 //   System.out.println("single number which is unique is: "+singleNumber2(arr));
 //targetSumOfPairs(arr, target);
         // targetSumOfTriples(arr, target);
-       System.out.println(secondMax(arr));
+       //System.out.println(secondMax(arr));
+       maxSubArray(arr);
     }
     
     

@@ -257,7 +257,7 @@ static int secondMax(int[] arr){
     
     return secondmx;
 }
-//bootforce solution of maximum subarray sum
+//bruteforce solution of maximum subarray sum
 static void maxSubArray(int[] arr){
     for (int i = 0; i < arr.length; i++) {
         for (int j = i; j < arr.length; j++) {
@@ -270,6 +270,18 @@ static void maxSubArray(int[] arr){
     }
 }
 
+//improve the bruteforce
+static int maxSubArray2(int[] arr){
+    int maxSum = Integer.MIN_VALUE;
+    for (int i = 0; i < arr.length; i++) {
+        int currSum =0;
+        for (int j = 0; j < arr.length; j++) {
+            currSum += arr[j];
+            maxSum = Math.max(currSum, maxSum);
+        }
+    }
+    return  maxSum;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -319,7 +331,8 @@ static void maxSubArray(int[] arr){
 //targetSumOfPairs(arr, target);
         // targetSumOfTriples(arr, target);
        //System.out.println(secondMax(arr));
-       maxSubArray(arr);
+      // maxSubArray(arr);
+      System.out.println(maxSubArray2(arr));
     }
     
     

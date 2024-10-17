@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
-
-public class Arrays {
+import java.util.Arrays;
+public class ArraysTopic {
     static void  smallAndLargestArray(int[] arr, int size){
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
@@ -220,6 +220,21 @@ static void targetSumOfPairs(int[] arr, int target){
         }
     }
 }
+//optimised opproch
+static void targetSumOfPairsOptimizedWay(int[] arr, int target){
+    int start = 0;
+    int end = arr.length-1;
+    while (start < end) {
+        int pairSum = arr[start] +arr[end];
+        if (pairSum > target) {
+            end--;
+        }else if (pairSum < target) {
+            start++;
+        }else{
+            System.out.println(start+","+end);
+        }
+    }
+}
 
 //triples whose sum is equal to the target number
 static void targetSumOfTriples(int[] arr, int target){
@@ -282,6 +297,68 @@ static int maxSubArray2(int[] arr){
     }
     return  maxSum;
 }
+
+//kadane's Algorithm
+// most optimised
+static int maxSubArr(int[] arr){
+    int maxSum = Integer.MIN_VALUE;
+    int currSum = 0;
+    for (int values : arr) {
+        currSum += arr[values];
+        maxSum = Math.max(currSum, maxSum);
+        if (currSum < 0) {
+            currSum = 0;
+        }
+    }
+    return maxSum;
+}
+
+
+//majority element through bruteforce methode
+static int majorityElementBruteforce(int[] arr){
+    /* for (int i = 0; i < arr.length; i++) {
+        int freq = 0;
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[i] == arr[j]) {
+                freq++;
+            }
+        }
+        if (freq > arr.length/2) {
+            return  arr[i];
+        }
+    } */
+   // we can also use foreach loop
+   for (int val : arr) {
+    int freq = 0;
+    for (int el : arr) {
+        if (el == val) {
+            freq++;
+        }
+    }
+    if (freq > arr.length/2) {
+        return  val;
+    }
+   }
+   return -1; 
+}
+//optimized approach
+static  int majorityElementoptimize(int[] arr){
+    if (arr.length == 1) return arr[0];
+    //sort the given array
+    Arrays.sort(arr);
+    int freq = 1;
+   for (int i = 1; i < arr.length; i++) {
+    if (arr[i-1] == arr[i]) {
+        freq++;
+    }else{
+        freq = 1;
+    }
+    if (freq > arr.length/2) {
+        return arr[i];
+    }
+   }
+   return -1;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -332,7 +409,11 @@ static int maxSubArray2(int[] arr){
         // targetSumOfTriples(arr, target);
        //System.out.println(secondMax(arr));
       // maxSubArray(arr);
-      System.out.println(maxSubArray2(arr));
+      //System.out.println(maxSubArray2(arr));
+     // System.out.println(maxSubArr(arr));
+  //targetSumOfPairsOptimizedWay(arr, target);
+  //System.out.println(majorityElementBruteforce(arr));
+  System.out.println(majorityElementoptimize(arr));
     }
     
     

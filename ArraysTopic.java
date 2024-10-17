@@ -1,6 +1,6 @@
 
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 public class ArraysTopic {
     static void  smallAndLargestArray(int[] arr, int size){
         int max = Integer.MIN_VALUE;
@@ -376,15 +376,59 @@ static int majorityElementMooresMethod(int[] arr){
     }
     return ans;
 }
+
+//first repeating value return
+static int firstRepeatingValue(int[] arr){
+    int ans = 0;
+    int freq = 0;
+    //i think it is done with moores's algorithm
+    for (int i = 0; i < arr.length; i++) {
+        for (int j = i+1; j < arr.length; j++) {
+          if (arr[i] == arr[j]) {
+            return  arr[i];
+          }  
+        }
+    }
+    return -1;
+    
+}
+
+//swap in another two different ways
+static void swapMethod2(int a, int b){
+    //without using temporary variable
+    a = a+b;
+    b = a-b;
+    a = a-b;
+    System.out.println("a is: "+a);
+    System.out.println("b is: "+b);
+}
+static void swapMethod3(int a, int b){
+    //without using temporary variable
+    //through the bitwise operators
+    //for a = 3 => 0011
+    //for b = 5 => 0101
+    //then a = a^b =   0110
+    //then b = 0101 so 0101
+    //                 0011
+    //then we got the b = 3;
+    //then again a = 0110 
+    // then a = a^b = 0110^0011 => 0101 => 5
+    //so it swaped
+    a = a^b;  
+    b = a^b;
+    a = a^b;
+    System.out.println("a is: "+a);
+    System.out.println("b is: "+b);
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int size = sc.nextInt();
-        int[] arr = new int[size];
-        for (int idx = 0; idx < arr.length; idx++) {
-            arr[idx] = sc.nextInt();
+        // int size = sc.nextInt();
+        // int[] arr = new int[size];
+        // for (int idx = 0; idx < arr.length; idx++) {
+        //     arr[idx] = sc.nextInt();
             
-         }
-        int target = sc.nextInt();
+        //  }
+        // int target = sc.nextInt();
         //smallAndLargestArray(arr, size);
        // smallAndLargestArrayIndex(arr, size);
        //System.out.println(linearSearch(arr, size, target));
@@ -431,7 +475,9 @@ static int majorityElementMooresMethod(int[] arr){
   //targetSumOfPairsOptimizedWay(arr, target);
   //System.out.println(majorityElementBruteforce(arr));
   //System.out.println(majorityElementoptimize(arr));
-  System.out.println(majorityElementMooresMethod(arr));
+ // System.out.println(majorityElementMooresMethod(arr));
+ //System.out.println("the first repeated values is: "+firstRepeatingValue(arr));
+ swapMethod3(3,5);
     }
     
     

@@ -359,6 +359,23 @@ static  int majorityElementoptimize(int[] arr){
    }
    return -1;
 }
+//moore's voting alogorithm
+static int majorityElementMooresMethod(int[] arr){
+    int freq = 0; 
+    int ans = 0;
+    for (int index = 0; index < arr.length; index++) {
+        if (freq == 0) {
+            ans = arr[index];
+        }
+        //checking the current element
+        if (ans == arr[index]) {
+            freq++;
+        }else{
+            freq--;
+        }
+    }
+    return ans;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int size = sc.nextInt();
@@ -413,7 +430,8 @@ static  int majorityElementoptimize(int[] arr){
      // System.out.println(maxSubArr(arr));
   //targetSumOfPairsOptimizedWay(arr, target);
   //System.out.println(majorityElementBruteforce(arr));
-  System.out.println(majorityElementoptimize(arr));
+  //System.out.println(majorityElementoptimize(arr));
+  System.out.println(majorityElementMooresMethod(arr));
     }
     
     

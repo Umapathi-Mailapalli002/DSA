@@ -2,6 +2,13 @@
 import java.util.Arrays;
 import java.util.Scanner;
 public class ArraysTopic {
+    //print array
+static void printArray(int[] arr){
+    for (int i = 0 ; i < arr.length; i++) {
+        System.out.print(arr[i]+" ");
+    }
+    System.out.println();
+}
     static void  smallAndLargestArray(int[] arr, int size){
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
@@ -420,14 +427,27 @@ static void swapMethod3(int a, int b){
     System.out.println("a is: "+a);
     System.out.println("b is: "+b);
 }
+
+//reversing array with extra space means by using extra array
+static int[] revArrayWithExtraSpace(int[] arr){
+    int[] ans = new int[arr.length];
+    int j = 0;
+    for (int i = arr.length-1; i >= 0; i--) {
+        ans[j++] = arr[i];
+    }
+    printArray(ans);
+    return ans;
+}
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        // int size = sc.nextInt();
-        // int[] arr = new int[size];
-        // for (int idx = 0; idx < arr.length; idx++) {
-        //     arr[idx] = sc.nextInt();
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+        for (int idx = 0; idx < arr.length; idx++) {
+            arr[idx] = sc.nextInt();
             
-        //  }
+         }
         // int target = sc.nextInt();
         //smallAndLargestArray(arr, size);
        // smallAndLargestArrayIndex(arr, size);
@@ -477,8 +497,11 @@ static void swapMethod3(int a, int b){
   //System.out.println(majorityElementoptimize(arr));
  // System.out.println(majorityElementMooresMethod(arr));
  //System.out.println("the first repeated values is: "+firstRepeatingValue(arr));
- swapMethod3(3,5);
-    }
+ //swapMethod3(3,5);
+revArrayWithExtraSpace(arr);
+int[] rev = revArrayWithExtraSpace(arr);
+System.out.println(Arrays.toString(rev));
+}
     
     
     

@@ -1,7 +1,7 @@
 import java.util.*;
 public class Functions {
 
-    //sum of n numbers
+    //sum of n numbers time complexity is O(n)
     static int sumOfNum(int n) {
         int sum = 0;
         for (int i = 0; i < n; i++) {
@@ -9,6 +9,11 @@ public class Functions {
         }
         return sum;
     }
+//but we can do this in constant time which is most optimized approach
+static int sumOfNum2(int n){
+    int ans = n*(n+1)/2;
+    return ans;
+}
 
     //N factorial
    static int factorial(int n){
@@ -137,6 +142,7 @@ public class Functions {
 
        //System.out.println(checkPrimeNumOrNot(n));
         //System.out.println(printPrimeNum(n));
-        System.out.println(fibonacci(n));
+       // System.out.println(fibonacci(n));
+       System.out.println(sumOfNum2(n));
     }
 }

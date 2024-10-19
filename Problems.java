@@ -48,12 +48,51 @@ public class Problems {
 
     }
 
+//121. Best time to buy and sell stocks
+static int stocks(int[] prices){
+    int bestBuy = 0;
+    int buyPrice = Integer.MAX_VALUE;
+    int sellPrice = Integer.MIN_VALUE;
+    
+    for (int i = 0; i < prices.length; i++) {
+        if (prices[i] < buyPrice) {
+            bestBuy = i;
+            buyPrice = prices[i];
+        }
+    }
+    for (int i = bestBuy+1; i < prices.length; i++) {
+        if (prices[i] > sellPrice) {
+            sellPrice = prices[i];
+        }
+    }
+    return sellPrice - buyPrice;
 
+}
+//another way more optimized
+static int stocks2(int[] prices){
+    int bestBuy = prices[0];
+    int maxProfit = 0;
+    for (int i = 1; i < prices.length; i++) {
+        if (prices[i] > maxProfit) {
+            maxProfit = Math.max(maxProfit, prices[i] - bestBuy);
+        }
+            bestBuy = Math.min(prices[i], bestBuy);
+    }
+    return maxProfit;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        double x = sc.nextDouble();
+        //int n = sc.nextInt();
+        //double x = sc.nextDouble();
+        int size = sc.nextInt();
+        int[] arr = new int[size];
+        for (int idx = 0; idx < arr.length; idx++) {
+            arr[idx] = sc.nextInt();
+            
+         }
         //System.out.println(calPower(x, n));
-        System.out.println(myPow(x, n));
+        //System.out.println(myPow(x, n));
+        //System.out.println(stocks(arr));
+         System.out.println(stocks2(arr));
     }
 }

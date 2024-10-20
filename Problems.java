@@ -80,6 +80,40 @@ static int stocks2(int[] prices){
     }
     return maxProfit;
 }
+
+//container with most water with bruteforce approach in which time complexity is O(n^2)
+static int mostWaterBruteforce(int[] height){
+    int maxWater = 0;
+    for (int i = 0; i < height.length; i++) {
+        for (int j = i+1; j < height.length; j++) {
+            int w = j -i;
+            int minHeight = Math.min(height[i], height[j]);
+            int currWater = w*minHeight;
+            maxWater = Math.max(maxWater, currWater);
+        }
+    }
+    return maxWater;
+}
+
+//two pointers approach which is optimal solution for this 
+// 11. conatainer with most water
+static int mostWaterOptimal(int[] heights){
+    int maxWater = 0;
+    int start = 0;
+    int end = heights.length-1;
+    while (start < end) {
+        int w = end - start;
+        int minHeight = Math.min(heights[start], heights[end]);
+        int currWater = w*minHeight;
+        if (heights[start] < heights[end]) {
+            start++;
+        }else{
+            end--;
+        }
+        maxWater = Math.max(maxWater, currWater);
+    }
+    return maxWater;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //int n = sc.nextInt();
@@ -93,6 +127,8 @@ static int stocks2(int[] prices){
         //System.out.println(calPower(x, n));
         //System.out.println(myPow(x, n));
         //System.out.println(stocks(arr));
-         System.out.println(stocks2(arr));
+         //System.out.println(stocks2(arr));
+        // System.out.println(mostWaterBruteforce(arr));
+        System.out.println(mostWaterOptimal(arr));
     }
 }

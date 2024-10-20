@@ -1,4 +1,5 @@
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Problems {
@@ -114,6 +115,43 @@ static int mostWaterOptimal(int[] heights){
     }
     return maxWater;
 }
+
+//product of array except self bruteforce appraoch
+static int[] productArraysExceptSelfBruteforce(int[] arr){
+    int[] ans = new int[arr.length];
+    for (int i = 0; i < arr.length; i++) {
+        // int product = 1;
+        for (int j = 0; j < arr.length; j++) {
+            if (i != j) {
+                ans[i] *= arr[j]; //this is also works same
+                // ans[i] = product;
+            }
+           
+        }
+    }
+    return ans;
+}
+//optimal approach for product of array except self with
+//time complexity O(n) and space complexity O(n)
+static int[] productArraysExceptSelfOptimal(int[] arr){
+    int[] prefix = new int[arr.length];
+    int[] suffix = new int[arr.length];
+    int[] ans = new int[arr.length];
+    prefix[0] = 1; 
+    for (int i = 1; i < arr.length; i++) {
+        prefix[i] = prefix[i-1] * arr[i-1];
+    }
+    System.out.println(Arrays.toString(prefix));
+    suffix[arr.length - 1] = 1;
+    for (int i = arr.length-2; i >= 0; i--) {
+        suffix[i] = suffix[i+1] * arr[i+1];
+    }
+    System.out.println(Arrays.toString(suffix));
+    for (int i = 0; i < arr.length; i++) {
+        ans[i] = prefix[i]*suffix[i];
+    }
+    return ans;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //int n = sc.nextInt();
@@ -129,6 +167,8 @@ static int mostWaterOptimal(int[] heights){
         //System.out.println(stocks(arr));
          //System.out.println(stocks2(arr));
         // System.out.println(mostWaterBruteforce(arr));
-        System.out.println(mostWaterOptimal(arr));
+        //System.out.println(mostWaterOptimal(arr));
+       // System.out.println(Arrays.toString(productArraysExceptSelfBruteforce(arr)));
+        System.out.println(Arrays.toString(productArraysExceptSelfOptimal(arr)));
     }
 }

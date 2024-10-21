@@ -152,6 +152,21 @@ static int[] productArraysExceptSelfOptimal(int[] arr){
     }
     return ans;
 }
+
+//most optimal appraoch with space complexity O(1) and time complexity O(n)
+static int[] productArraysExceptSelfOptimized(int[] arr){
+    int[] ans = new int[arr.length];
+    ans[0] = 1;
+    for (int i = 1; i < arr.length; i++) {
+        ans[i] = ans[i-1] * arr[i-1];
+    }
+    int suffix = 1;
+    for (int i = arr.length-2; i >= 0; i--) {
+        suffix *= arr[i+1];
+        ans[i] *= suffix;
+    }
+  return ans;
+}
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         //int n = sc.nextInt();
@@ -169,6 +184,7 @@ static int[] productArraysExceptSelfOptimal(int[] arr){
         // System.out.println(mostWaterBruteforce(arr));
         //System.out.println(mostWaterOptimal(arr));
        // System.out.println(Arrays.toString(productArraysExceptSelfBruteforce(arr)));
-        System.out.println(Arrays.toString(productArraysExceptSelfOptimal(arr)));
+       // System.out.println(Arrays.toString(productArraysExceptSelfOptimal(arr)));
+       System.out.println(Arrays.toString(productArraysExceptSelfOptimized(arr)));
     }
 }

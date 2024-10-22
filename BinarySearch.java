@@ -38,6 +38,18 @@ public class BinarySearch {
         return ans;
     }
 
+
+    //seach in rotated Sorted array through binary search
+    static int findTargetElementRotatedArray(int[] arr, int target){
+       int start = 0;
+       int end = arr.length-1;
+       int ans = -1;
+       while (start <= end) { 
+        int mid = start + (end - start)/2;
+        
+    }
+    return ans;
+    }
     public static void main(String[] args) {
         // binary serch is only used in sorted array
         // from increasing or decreasing
@@ -53,6 +65,7 @@ public class BinarySearch {
        int target = sc.nextInt();
 
        // System.out.println(findTargetElement(arr, target));
-       System.out.println(findTargetElementRecursiveWay(arr, target, 0, size-1));
+       //System.out.println(findTargetElementRecursiveWay(arr, target, 0, size-1));
+       System.out.println(findTargetElementRotatedArray(arr, target));
     }
 }

@@ -1,4 +1,23 @@
 public class BitwiseOperators {
+    //swaping of two numbers using bitwise operators
+    static void swapMethod3(int a, int b){
+        //without using temporary variable
+        //through the bitwise operators
+        //for a = 3 => 0011
+        //for b = 5 => 0101
+        //then a = a^b =   0110
+        //then b = 0101 so 0101
+        //                 0011
+        //then we got the b = 3;
+        //then again a = 0110 
+        // then a = a^b = 0110^0011 => 0101 => 5
+        //so it swaped
+        a = a^b;  
+        b = a^b;
+        a = a^b;
+        System.out.println("a is: "+a);
+        System.out.println("b is: "+b);
+    }
     public static void main(String[] args) {
         //H.M
         System.out.println( 6 & 10);

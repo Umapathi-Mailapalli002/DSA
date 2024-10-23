@@ -87,6 +87,52 @@ public class BinarySearch {
     } */
     return -1;
     }
+    // 852. peak element by bruteforce approach with linear search
+    static int peakElementBruteforce(int[] arr){
+        int ans = -1;
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i-1] > arr[i]) {
+                ans = i-1;
+                break;
+            }
+        }
+        return ans;
+    }
+
+    //optimal approach with binary search peak element with binary search
+    static int peakElementOptimal(int[] arr){
+        int st = 0;
+        int ed = arr.length - 1;
+        while (st <= ed) { 
+            int md = st + (ed -st)/2;
+            if (arr[md] > arr[md-1] && arr[md] > arr[md+1]) {
+                return md;
+            }else if (arr[md] > arr[md-1]) {
+                st = md +1;
+            }else{
+                ed = md -1;
+            }
+        }
+        return -1;
+    }
+
+    //most optimal approach in which we can if it is a mountain array
+    //then the first and last not be a peak element so we take from st = 1 and ed = arr.length - 1
+    static int peakElementMostOptimal(int[] arr){
+        int st = 1;
+        int ed = arr.length - 2;
+        while (st <= ed) { 
+            int md = st + (ed -st)/2;
+            if (arr[md] > arr[md-1] && arr[md] > arr[md+1]) {
+                return md;
+            }else if (arr[md] > arr[md-1]) {
+                st = md +1;
+            }else{
+                ed = md -1;
+            }
+        }
+        return -1;
+    }
     public static void main(String[] args) {
         // binary serch is only used in sorted array
         // from increasing or decreasing
@@ -99,10 +145,13 @@ public class BinarySearch {
             arr[idx] = sc.nextInt();
 
         }
-       int target = sc.nextInt();
+       //int target = sc.nextInt();
 
        // System.out.println(findTargetElement(arr, target));
        //System.out.println(findTargetElementRecursiveWay(arr, target, 0, size-1));
-       System.out.println(findTargetElementRotatedArray(arr, target));
+       //System.out.println(findTargetElementRotatedArray(arr, target));
+       //System.out.println(peakElementBruteforce(arr));
+       //System.out.println(peakElementOptimal(arr));
+       System.out.println(peakElementMostOptimal(arr));
     }
 }

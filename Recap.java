@@ -21,6 +21,26 @@ public class Recap {
         }
         return  decimalNum;
     }
+    static int findTargetElement(int[] arr, int target){
+        int ans = -1;
+        int start = 0;
+        int end = arr.length-1;
+        while (start <= end) {
+            int mid = start + (end- start)/2;
+            if (arr[mid] == target) {
+                ans = mid;
+                break;
+            }
+            else if (arr[mid] > target) {
+                end = mid-1;
+            }else{
+                start = mid +1;
+            }
+        }
+        return  ans;
+    }
+
+    
     public static void main(String[] args) {
         System.out.println(decimal2binary(10));
         System.out.println(binary2Decimal(1010));

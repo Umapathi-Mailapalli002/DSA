@@ -63,6 +63,34 @@ public class Recap {
         }
         return -1;
     }
+    static int findPeakElement(int[] arr){
+        int st= 0;
+        int ed = arr.length -1 ;
+        while (st <= ed) {
+            int md = st + (ed -st)/2;
+            if (arr[md] > arr[md-1] && arr[md] > arr[md+1]) {
+                return  md;
+            }else if (arr[md] > arr[md-1]) {
+                st = md +1;
+            }else{
+                ed = md -1;
+            }
+        }
+        return -1;
+    }
+
+    static int fibonacci(int n) {
+        int x = 0;
+        int y = 1;
+        int curr;
+        for (int i = 0; i < n; i++) {
+            curr = x+y;
+            System.out.print(x+" ");
+            x = y;
+            y = curr;
+        }
+        return 0;
+    }
     public static void main(String[] args) {
         System.out.println(decimal2binary(10));
         System.out.println(binary2Decimal(1010));
